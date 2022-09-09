@@ -31,22 +31,27 @@ function createGalleryCardsMarkup(galleryItems) {
 }
 
 function onGalleryContainerClick(event) {
-    console.log(event.target)
+  // console.log(event.target);
+  event.preventDefault();
     if (event.target.nodeName !== "IMG") {
       return;
     }
 
-    const selectedImage = event.target.original;
+    const selectedImage = event.target.dataset.source;
 
     const instance = basicLightbox.create(`
     <img src="${selectedImage}" width="800" height="600">
     `);
 
-    instance.show();
+  instance.show();
+  
+  gallery.addEventListener("keydown", keyСlosure);
 
-    gallery.addEventListener("keydown", e => {
-      if (e.key === "Escape") {
-        instance.close();
-      }
-    });
+  function keyСlosure(evt) {
+    
+    if (evt.key === "Escape") {
+      instance.close();
+    }
+  }
+
 }
