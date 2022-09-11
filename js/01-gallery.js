@@ -12,6 +12,8 @@ galleryContainer.insertAdjacentHTML("beforeend", galleryCards);
 
 galleryContainer.addEventListener("click", onGalleryContainerClick);
 
+
+
 function createGalleryCardsMarkup(galleryItems) {
     return galleryItems.map(({ preview, original, description }) => {
       return `
@@ -36,20 +38,22 @@ function onGalleryContainerClick(event) {
     if (event.target.nodeName !== "IMG") {
       return;
     }
-
+  
     const selectedImage = event.target.dataset.source;
 
-    const instance = basicLightbox.create(`
+    const instance = basicLightbox.create(
+      `
     <img src="${selectedImage}" width="800" height="600">
-    `);
-
-  instance.show();
-  
-  gallery.addEventListener("keydown", keyСlosure);
-
-  function keyСlosure(evt) {
+    `, {});
     
-    if (evt.key === "Escape") {
+    instance.show();
+  
+    window.addEventListener("keydown", keyСlosure);
+
+    function keyСlosure(evt) {
+    console.log(evt);
+    
+    if (evt.code === "Escape") {
       instance.close();
     }
   }
