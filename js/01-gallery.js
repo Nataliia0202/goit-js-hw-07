@@ -44,11 +44,14 @@ function onGalleryContainerClick(event) {
     const instance = basicLightbox.create(
       `
     <img src="${selectedImage}" width="800" height="600">
-    `, {});
+    `,
+      {
+        onShow: (instance) => { window.addEventListener("keydown", keyСlosure)},
+        onClose: (instance) => {window.removeEventListener("keydown", keyСlosure)},
+      }
+    );
     
     instance.show();
-  
-    window.addEventListener("keydown", keyСlosure);
 
     function keyСlosure(evt) {
     console.log(evt);
