@@ -26,6 +26,6 @@ function createGalleryCardsMarkup(galleryItems) {
     }).join("");
     
 }
-var lightbox = new SimpleLightbox(".gallery a", {
+const lightbox = new SimpleLightbox(".gallery a", {
     captionDelay: 250,
 });
