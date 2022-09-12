@@ -54,7 +54,7 @@ function onGalleryContainerClick(event) {
     instance.show();
 
     function keyСlosure(evt) {
-    console.log(evt);
+    // console.log(evt);
     
     if (evt.code === "Escape") {
       instance.close();
